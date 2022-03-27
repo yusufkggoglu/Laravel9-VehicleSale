@@ -31,7 +31,7 @@ Route::redirect('/anasayfa', '/home')->name('anasayfa');
 //veya
 Route::get('/test/{id}/{name}', [HomeController::class, 'test'])->whereNumber('id')->whereAlpha('name')->name('test');
 
-
+Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

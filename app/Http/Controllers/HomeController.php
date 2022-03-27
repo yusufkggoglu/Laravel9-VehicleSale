@@ -26,4 +26,9 @@ class HomeController extends Controller
             echo "<br> $i - $name";
         }*/
     }
+
+    public function aboutus()
+    {
+        return view('home.about');
+    }
 }
