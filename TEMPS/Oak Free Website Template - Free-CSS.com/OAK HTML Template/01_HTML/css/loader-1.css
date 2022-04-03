@@ -1,0 +1,57 @@
+.preloader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #f2f2f2;
+    z-index: 99999;
+}
+.pace {
+    -webkit-pointer-events: none;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    z-index: 9999999999;
+    position: fixed;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+}
+.pace .pace-progress {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    display: block;
+    position: absolute;
+    right: 100%;
+    width: 100%;
+    top: 50%;
+    height: 2px;
+    font-size: 12px;
+    background: #4a4a4a;
+    color: #4a4a4a;
+    line-height: 60px;
+    font-weight: bold;
+    z-index: 9999999;
+}
+
+.pace .pace-activity {
+    position: absolute;
+    width: 100%;
+    height: 28px;
+    z-index: 2001;
+}
+.pace.pace-inactive {
+    display: none;
+}
