@@ -59,9 +59,7 @@
 
 <body>
 @include('home._header')
-<button class="main-menu-indicator" id="open-button">
-    <span class="line"></span>
-</button>
+
 
 <div class="menu-wrap" style="background-image: url({{asset('assets')}}/img/nav_bg.jpg)">
     <div class="menu-content">

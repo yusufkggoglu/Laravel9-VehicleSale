@@ -2,9 +2,9 @@
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
-                    <i class="mdi mdi-home menu-icon"></i>
-                    <span class="menu-title">Dashboard</span>
+                <a class="nav-link" href="admin/index.html"">
+                <i class="mdi mdi-home menu-icon"></i>
+                <span class="menu-title">Dashboard</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -41,7 +41,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="pages/icons/mdi.html">
+                <a class="nav-link" href="admin/pages/icons/mdi.html">
                     <i class="mdi mdi-emoticon menu-icon"></i>
                     <span class="menu-title">Icons</span>
                 </a>
