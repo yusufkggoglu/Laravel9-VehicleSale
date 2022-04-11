@@ -16,9 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data = DB::select('select * from categories');
-
-        return view('admin.category.category', ['datalist' => $data]);
+        $data= Category::all();
+        return view('admin.category.category',['data'=> $data]);
     }
 
     /**
@@ -47,6 +46,7 @@ class CategoryController extends Controller
         $data->image = $request->image;
         $data->status = $request->status;
         $data->save();
+        return redirect('admin/category');
     }
 
     /**
