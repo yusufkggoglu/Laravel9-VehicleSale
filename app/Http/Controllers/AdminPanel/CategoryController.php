@@ -16,8 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data= Category::all();
-        return view('admin.category.category',['data'=> $data]);
+        $data = Category::all();
+        return view('admin.category.category', ['data' => $data]);
     }
 
     /**
@@ -66,9 +66,10 @@ class CategoryController extends Controller
      * @param \App\Models\Category $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Category $category, $id)
     {
-        //
+        $data = Category::find($id);
+        return view('admin.category.edit', ['data' => $data]);
     }
 
     /**
@@ -78,9 +79,9 @@ class CategoryController extends Controller
      * @param \App\Models\Category $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Category $category, $id)
     {
-        //
+
     }
 
     /**

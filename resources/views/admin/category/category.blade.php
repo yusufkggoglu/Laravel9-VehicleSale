@@ -1,45 +1,53 @@
 @extends('layouts.admin')
 
-@section('title', 'Add Category ')
+@section('title', 'Categories ')
 
 @section('content')
+
     <div class="main-panel">
         <div class="content-wrapper">
             <div class="row">
-                <center>
-                    <h1 style="color: #0e4cfd"> CATEGORIES</h1>
-                </center>
                 <div class="col-md-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Category List</h4>
-
                             <div class="template-demo">
                                 <div class="card-body">
-                                    <h4 class="card-title">Category Table</h4>
+                                    <h4 style="font-size: large" class="card-title">Category List</h4>
+                                    <div class="col-sm-push-6">
+                                        <a href="/admin/category/create" class="btn btn-md btn-inverse-primary btn-fw">Add
+                                            Category</a>
+                                    </div>
                                     <div class="table-responsive">
                                         <table class="table">
                                             <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Parent</th>
                                                 <th>Title</th>
+                                                <th>Keywords</th>
+                                                <th>Description</th>
+                                                <th>Image</th>
                                                 <th>Status</th>
                                                 <th>Edit</th>
                                                 <th>Delete</th>
+                                                <th>Show</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @foreach($datalist as $rs)
+                                            @foreach($data as $rs)
 
                                                 <tr>
                                                     <td>{{$rs->id}}</td>
-                                                    <td>{{$rs->parent_id}}</td>
                                                     <td>{{$rs->title}}</td>
+                                                    <td>{{$rs->keywords}}</td>
+                                                    <td>{{$rs->description}}</td>
+                                                    <td>{{$rs->image}}</td>
                                                     <td>{{$rs->status}}</td>
-                                                    <td>Edit</td>
-                                                    <td>Delete</td>
-
+                                                    <td><a href="/admin/category/edit/{{$rs->id}}"
+                                                           class="btn btn-primary btn-rounded btn-fw">Edit</a></td>
+                                                    <td><a href="/admin/category/delete/{{$rs->id}}"
+                                                           class="btn btn-danger btn-rounded btn-fw">Delete</a></td>
+                                                    <td><a href="/admin/category/show/{{$rs->id}}"
+                                                           class="btn btn-success btn-rounded btn-fw">Show</a></td>
                                                 </tr>
                                             @endforeach
                                             </tbody>

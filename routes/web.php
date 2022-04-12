@@ -24,12 +24,24 @@ Route::get('/test/{id}/{name}', [HomeController::class, 'test'])->whereNumber('i
 
 Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
 
-//Admin
+//ADMİN ROUTES
 Route::get('/admin', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_home')->middleware('auth');
-//login
+//LOGIN ROUTES
 Route::get('/admin/login', [HomeController::class, 'login'])->name('admin_login');
 Route::post('/admin/logincheck', [HomeController::class, 'logincheck'])->name('admin_logincheck');
 Route::get('/admin/logout', [HomeController::class, 'logout'])->name('admin_logout');
+// ADMİN CATEGOTY ROUTES
+Route::middleware('auth')->prefix('admin')->group(function () {
+    // Route::get('/', [\App\Http\Controllers\AdminPanel\CategoryController::class, 'index'])->name('admin_home');
+    Route::get('category', [\App\Http\Controllers\AdminPanel\CategoryController::class, 'index'])->name('admin_category');
+    Route::get('category/create', [\App\Http\Controllers\AdminPanel\CategoryController::class, 'create'])->name('admin_category_create');
+    Route::post('category/store', [\App\Http\Controllers\AdminPanel\CategoryController::class, 'store'])->name('admin_category_store');
+    Route::get('category/edit/{id}', [\App\Http\Controllers\AdminPanel\CategoryController::class, 'edit'])->name('admin_category_edit');
+
+
+});
+
+
 //end
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
