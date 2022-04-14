@@ -9,7 +9,7 @@
                 <div class="col-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">EDIT CATEGORY : {{$data->title}}</h4>
+                            <h4 class="card-title">EDIT CATEGORY  : {{$data->title}}</h4>
 
                             <form class="form" action="/admin/category/update/{{$data->id}}" method="post">
                                 @csrf
