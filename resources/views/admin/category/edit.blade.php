@@ -9,10 +9,24 @@
                 <div class="col-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">EDIT CATEGORY  : {{$data->title}}</h4>
+                            <h4 class="card-title">EDIT CATEGORY : {{$data->title}}</h4>
 
-                            <form class="form" action="/admin/category/update/{{$data->id}}" method="post">
+                            <form class="form" action="/admin/category/update/{{$data->id}}" method="post"
+                                  enctype="multipart/form-data">
                                 @csrf
+                                <div class="form-group">
+                                    <label>Parent Category</label>
+
+                                    <select class="form-control select2" name="parent_id">
+                                        <option value="0" selected="selected">Main Category</option>
+                                        @foreach($datalist as $rs)
+                                            <option value="{{$rs->id}}"
+                                                    @if($rs->id == $data->parent_id) selected="selected" @endif>
+                                                {{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title)}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="form-group">
                                     <label>Title</label>
                                     <input type="text" name="title" class="form-control" value="{{$data->title}}">
@@ -32,9 +46,9 @@
                                     <div class="input-group col-xs-12">
                                         <input type="text" class="form-control file-upload-info" disabled
                                                placeholder="Choose Image File">
-                                        <span class="input-group-append">
-                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                        </span>
+                                        <div class="custom-file">
+                                            <input type="file" name="image" class="custom-file-input">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
