@@ -1,6 +1,6 @@
 "use strict";
 
-//Esc Key 
+//Esc Key
 $.fn.escape = function(callback) {
     return this.each(function() {
         jQuery(document).on("keydown", this, function(e) {
@@ -68,7 +68,7 @@ function Tabs() {
     });
 };
 
-//Dribble 
+//Dribble
 function getDribbbleThumbs() {
     jQuery.jribbble.setToken(dribbbleToken);
     jQuery.jribbble.users(dribbbleName).shots({
@@ -101,7 +101,7 @@ function getSocialButtons() {
     }
 };
 
-//Scroll Top 
+//Scroll Top
 $.fn.scrollToTop = function() {
     jQuery(this).hide().removeAttr('href');
     if (jQuery(window).scrollTop() != '0') {
@@ -167,10 +167,10 @@ function historySlider() {
 
 //Like
 function likeEf() {
-    jQuery('.like-product').on('click',  function() {
+    jQuery('.like-car').on('click',  function() {
         jQuery(this).find('i').toggleClass('press');
         jQuery(this).find('i').removeClass('ion-ios-heart-outline');
-        jQuery(this).find('span.like-product').toggleClass('press');
+        jQuery(this).find('span.like-car').toggleClass('press');
         if (jQuery(this).find('i').hasClass('press') || jQuery(this).find('i').hasClass('ion-ios-heart-outline')) {
             jQuery(this).find('.output').html(function(i, val) {
                 return val * 1 + 1
@@ -190,16 +190,16 @@ function likeEf() {
 
 //Document Ready
 jQuery(document).ready(function($) {
-    
+
     //Navigation Sub Menu Triggering
     jQuery('.menu-item-has-children, .page_item_has_children').hover(function() {
         jQuery(this).children('.sub-menu').stop().slideDown(200);
-    }, 
+    },
     function() {
         jQuery(this).children('.sub-menu').stop().slideUp(200);
     });
 
-    //Mobile Menu Open/Close 
+    //Mobile Menu Open/Close
     jQuery('#open-mobile-menu').on('click', function() {
         var self = jQuery(this);
         var mobileMenu = jQuery('.menu-wrap-2');
@@ -323,7 +323,7 @@ jQuery(document).ready(function($) {
         jQuery(".cover").addClass('animated fadeOutRight').fadeOut(1000);
     });
 
-    //Magnific Popup  
+    //Magnific Popup
     jQuery('.popup-video').magnificPopup({
         type: 'iframe',
         closeOnContentClick: true,
@@ -348,7 +348,7 @@ jQuery(document).ready(function($) {
     //Like
     likeEf();
 
-    //Slider 
+    //Slider
     historySlider();
 
     //Get social sharing
@@ -357,14 +357,14 @@ jQuery(document).ready(function($) {
     //Init Tabs
     Tabs();
 
-    //WOW Animation init 
+    //WOW Animation init
     new WOW().init();
 
 });
 
 //Window Load
 jQuery(window).load(function($) {
-    
+
     /*Init Portfolio*/
     var container = jQuery("#work-grid");
     if (container.length > 0) {
