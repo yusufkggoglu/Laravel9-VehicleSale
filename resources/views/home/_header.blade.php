@@ -14,7 +14,7 @@
         <div class="menu-wrap" style="background-image: url({{asset('assets')}}/img/nav_bg.jpg)">
             <div class="menu-content">
                 <div class="navigation">
-                    <span class="pe-7s-close close-menu" id="close-button"></span>
+                    <span class="pe-7s-close close-menu" id="button"></span>
                     <div class="search-wrap js-ui-search">
                         <input class="js-ui-text" type="text" placeholder="Search Here...">
                         <span class="eks js-ui-close"></span>

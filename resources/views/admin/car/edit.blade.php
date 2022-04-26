@@ -2,6 +2,10 @@
 
 @section('title', 'Edit Car : '.$data->title)
 
+@section('js')
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+@endsection
+
 @section('content')
     <div class="main-panel">
         <div class="content-wrapper">
@@ -19,7 +23,8 @@
 
                                     <select class="form-control select2" name="category_id">
                                         @foreach($datalist as $rs)
-                                            <option value="{{$rs->id}}" @if($rs->id == $data->category_id) selected="selected" @endif>
+                                            <option value="{{$rs->id}}"
+                                                    @if($rs->id == $data->category_id) selected="selected" @endif>
                                                 {{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title)}}
                                             </option>
                                         @endforeach
@@ -78,7 +83,7 @@
                                         <option selected>{{$data->vites}}</option>
                                         <option>Automatic</option>
                                         <option>Manuel</option>
-                                    </select>                                </div>
+                                    </select></div>
                                 <div class="form-group">
                                     <label>Door</label>
                                     <input type="number" name="kapi" class="form-control" value="{{$data->kapi}}">
@@ -96,9 +101,9 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Description</label>
-                                    <textarea class="form-check" name="detail" style="width: 700px; height: 150px" value="{{$data->detail}}">
-
+                                    <label>Detail</label>
+                                    <textarea class="textarea" id="detail" name="detail" style="width: 700px; height: 150px">
+                                        {{$data->detail}}
                                     </textarea>
                                 </div>
                                 <div class="form-group">
@@ -129,4 +134,15 @@
                 </div>
             </div>
         </div>
+@endsection
+
+@section('footer')
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+    <script>
+    $(function () {
+        //Summernote
+        $('.textarea').summernote()
+    })
+    </script>
 @endsection

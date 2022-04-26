@@ -2,6 +2,10 @@
 
 @section('title', 'Add Car')
 
+@section('js')
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+@endsection
+
 @section('content')
     <div class="main-panel">
         <div class="content-wrapper">
@@ -18,7 +22,8 @@
                                     <label>Parent Category</label>
                                     <select class="form-control select2" name="category_id">
                                         @foreach($data as $rs)
-                                            <option value="{{$rs->id}}">{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title)}}</option>
+                                            <option
+                                                value="{{$rs->id}}">{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title)}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -70,8 +75,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Gear</label>
-                                    <input type="number" name="vites" class="form-control" value="0">
-                                </div>
+                                    <select class="form-control" name="vites">
+                                        <option>Automatic</option>
+                                        <option>Manuel</option>
+                                    </select></div>
                                 <div class="form-group">
                                     <label>Door</label>
                                     <input type="number" name="kapi" class="form-control" value="0">
@@ -99,10 +106,20 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Description</label>
-                                    <textarea class="form-check" name="detail" style="width: 700px; height: 150px">
+                                    <label>Detail</label>
+                                    <textarea class="form-check" id="detail" name="detail" style="width: 700px; height: 150px">
 
                                     </textarea>
+                                    <script>
+                                        ClassicEditor
+                                            .create(document.querySelector('#detail'))
+                                            .then(editor =>{
+                                                    console.log(editor);
+                                            })
+                                            .catch(error=>{
+                                                    console.error(error);
+                                            })
+                                    </script>
                                 </div>
                                 <div class="form-group">
                                     <label>Status</label>
