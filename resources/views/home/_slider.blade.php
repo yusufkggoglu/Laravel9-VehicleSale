@@ -2,7 +2,7 @@
     <div class="slider-wrapper">
         <div class="slider-description">
             <div class="slider-description-inner">
-                <h1>Pure<span>Elegance</span></h1>
+                <h1>OAK<span>CAR</span></h1>
             </div>
             <div class="cd-intro">
                 <div class="cd-headline clip">

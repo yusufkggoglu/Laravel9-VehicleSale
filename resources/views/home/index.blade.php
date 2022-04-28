@@ -7,7 +7,31 @@
 @section('keywords','Araç,Araba,Satılık,Satılık Araba,Sedan,Hatchback')
 
 @section('content')
-    @include('home._slider')
+    <!-- slider -->
+    <div class="container">
+        <div class="slider-wrapper">
+            <div class="slider-description">
+                <div class="slider-description-inner">
+                    <h1 style="color:black">OAK<span>CAR</span></h1>
+                </div>
+                <div class="cd-intro">
+                    <div class="cd-headline clip">
+                            <span class="cd-words-wrapper">
+                            <b class="is-visible" style="color:black">Güvenilir araç sitesi</b>
+                            <b style="color:black">Araç alım satım</b>
+                            <b style="color:black">Bize katılın...</b>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div id="arch-slider" class="slider-images-wrapper" style="width:1135px">
+                @foreach($sliderdata as $rs)
+                    <img class="img-responsive center-block" src="{{Storage::url($rs->image)}}" alt="">
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <!-- slider -->
     <div class="container margin-top">
         <div class="history-wrapper">
             <div class="col-md-6 wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.5s">
@@ -18,9 +42,12 @@
                         <h4>WHO LOVES OR PURSUES OR DESIRES TO OBTAIN PAIN OF ITSELF, BUT BECAUSE OCCASIONALLY
                             CIRCUMSTANCES OCCUR AND PAIN CAN PROCURE HIM SOME GREAT PLEASURE</h4>
                         <p>
-                            <br/>Porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
-                            sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat
-                            voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit
+                            <br/>Porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
+                            velit,
+                            sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam
+                            quaerat
+                            voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
+                            suscipit
                             laboriosam, nisi ut aliquid ex ea commodi modi tempora incidunt ut labore.</p>
                     </article>
                 </div>
@@ -79,9 +106,9 @@
     </div>
     <div class="container margin-top">
         <div class="main-title">
-            <h1>OUR WORK</h1>
+            <h1>CARS</h1>
             <hr>
-            <h6>Laborious to obtain some advantage from it</h6>
+            <h6>Check out our cars...</h6>
         </div>
         <div class="portfolio-wrapper">
             <button class="nav">
@@ -101,177 +128,30 @@
             <div class="js-masonry">
                 <div class="row" id="work-grid">
                     <!-- Begin of Thumbs Portfolio -->
-                    <div class="col-md-4 col-sm-4 col-xs-12 mix branding">
-                        <div class="img home-portfolio-image">
-                            <img src="{{asset('assets')}}/img/home-portfolio/img_1.jpg" alt="Portfolio Item">
-                            <div class="overlay-thumb">
-                                <a href="javascript:void(0)" class="like-product">
-                                    <i class="ion-ios-heart-outline"></i>
-                                    <span class="like-product">Liked</span>
-                                    <span class="output">250</span>
-                                </a>
-                                <div class="details">
-                                    <span class="title">STYLE FASHION</span>
-                                    <span class="info">NEW BAG & STYLE FASHION</span>
+                    @foreach($carlist1 as $rs)
+                        <div class="col-md-4 col-sm-4 col-xs-12 mix web">
+
+                            <div class="img home-portfolio-image">
+                                <img src="{{Storage::url($rs->image)}}" style="width:370px;height:300px "
+                                     alt="Portfolio Item">
+                                <div class="overlay-thumb">
+                                    <a href="javascript:void(0)" class="like-product">
+                                        <i class="ion-ios-heart-outline"></i>
+                                        <span class="like-product">Liked</span>
+                                        <span class="output">60</span>
+                                    </a>
+                                    <div class="details">
+                                        <span class="title">{{$rs->title}}</span>
+                                        <span class="info">{{$rs->price}}₺</span>
+                                    </div>
+                                    <span class="btnBefore"></span>
+                                    <span class="btnAfter"></span>
+                                    <a class="main-portfolio-link" href="{{route('car',['id'=>$rs->id])}}"></a>
                                 </div>
-                                <span class="btnBefore"></span>
-                                <span class="btnAfter"></span>
-                                <a class="main-portfolio-link" href="single-project.html"></a>
                             </div>
+
                         </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12 mix web">
-                        <div class="img home-portfolio-image">
-                            <img src="{{asset('assets')}}/img/home-portfolio/img_2.jpg" alt="Portfolio Item">
-                            <div class="overlay-thumb">
-                                <a href="javascript:void(0)" class="like-product">
-                                    <i class="ion-ios-heart-outline"></i>
-                                    <span class="like-product">Liked</span>
-                                    <span class="output">60</span>
-                                </a>
-                                <div class="details">
-                                    <span class="title">WATCH-J</span>
-                                    <span class="info">NEW TREND FASHION</span>
-                                </div>
-                                <span class="btnBefore"></span>
-                                <span class="btnAfter"></span>
-                                <a class="main-portfolio-link" href="single-project.html"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12 mix graphic">
-                        <div class="img home-portfolio-image">
-                            <img src="{{asset('assets')}}/img/home-portfolio/img_3.jpg" alt="Portfolio Item">
-                            <div class="overlay-thumb">
-                                <a href="javascript:void(0)" class="like-product">
-                                    <i class="ion-ios-heart-outline"></i>
-                                    <span class="like-product">Liked</span>
-                                    <span class="output">1060</span>
-                                </a>
-                                <div class="details">
-                                    <span class="title">STYLE FASHION</span>
-                                    <span class="info">NEW BAG & STYLE FASHION</span>
-                                </div>
-                                <span class="btnBefore"></span>
-                                <span class="btnAfter"></span>
-                                <a class="main-portfolio-link" href="single-project.html"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12 mix branding">
-                        <div class="img home-portfolio-image">
-                            <img src="{{asset('assets')}}/img/home-portfolio/img_4.jpg" alt="Portfolio Item">
-                            <div class="overlay-thumb">
-                                <a href="javascript:void(0)" class="like-product">
-                                    <i class="ion-ios-heart-outline"></i>
-                                    <span class="like-product">Liked</span>
-                                    <span class="output">900</span>
-                                </a>
-                                <div class="details">
-                                    <span class="title">STYLE FASHION</span>
-                                    <span class="info">NEW BAG & STYLE FASHION</span>
-                                </div>
-                                <span class="btnBefore"></span>
-                                <span class="btnAfter"></span>
-                                <a class="main-portfolio-link" href="single-project.html"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12 mix branding">
-                        <div class="img home-portfolio-image">
-                            <img src="{{asset('assets')}}/img/home-portfolio/img_5.jpg" alt="Portfolio Item">
-                            <div class="overlay-thumb">
-                                <a href="javascript:void(0)" class="like-product">
-                                    <i class="ion-ios-heart-outline"></i>
-                                    <span class="like-product">Liked</span>
-                                    <span class="output">979</span>
-                                </a>
-                                <div class="details">
-                                    <span class="title">STYLE FASHION</span>
-                                    <span class="info">NEW BAG & STYLE FASHION</span>
-                                </div>
-                                <span class="btnBefore"></span>
-                                <span class="btnAfter"></span>
-                                <a class="main-portfolio-link" href="single-project.html"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12 mix branding">
-                        <div class="img home-portfolio-image">
-                            <img src="{{asset('assets')}}/img/home-portfolio/img_6.jpg" alt="Portfolio Item">
-                            <div class="overlay-thumb">
-                                <a href="javascript:void(0)" class="like-product">
-                                    <i class="ion-ios-heart-outline"></i>
-                                    <span class="like-product">Liked</span>
-                                    <span class="output">1024</span>
-                                </a>
-                                <div class="details">
-                                    <span class="title">STYLE FASHION</span>
-                                    <span class="info">NEW BAG & STYLE FASHION</span>
-                                </div>
-                                <span class="btnBefore"></span>
-                                <span class="btnAfter"></span>
-                                <a class="main-portfolio-link" href="single-project.html"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12 mix branding">
-                        <div class="img home-portfolio-image">
-                            <img src="{{asset('assets')}}/img/home-portfolio/img_7.jpg" alt="Portfolio Item">
-                            <div class="overlay-thumb">
-                                <a href="javascript:void(0)" class="like-product">
-                                    <i class="ion-ios-heart-outline"></i>
-                                    <span class="like-product">Liked</span>
-                                    <span class="output">2048</span>
-                                </a>
-                                <div class="details">
-                                    <span class="title">STYLE FASHION</span>
-                                    <span class="info">NEW BAG & STYLE FASHION</span>
-                                </div>
-                                <span class="btnBefore"></span>
-                                <span class="btnAfter"></span>
-                                <a class="main-portfolio-link" href="single-project.html"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12 mix branding">
-                        <div class="img home-portfolio-image">
-                            <img src="{{asset('assets')}}/img/home-portfolio/img_8.jpg" alt="Portfolio Item">
-                            <div class="overlay-thumb">
-                                <a href="javascript:void(0)" class="like-product">
-                                    <i class="ion-ios-heart-outline"></i>
-                                    <span class="like-product">Liked</span>
-                                    <span class="output">256</span>
-                                </a>
-                                <div class="details">
-                                    <span class="title">STYLE FASHION</span>
-                                    <span class="info">NEW BAG & STYLE FASHION</span>
-                                </div>
-                                <span class="btnBefore"></span>
-                                <span class="btnAfter"></span>
-                                <a class="main-portfolio-link" href="single-project.html"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12 mix branding">
-                        <div class="img home-portfolio-image">
-                            <img src="{{asset('assets')}}/img/home-portfolio/img_9.jpg" alt="Portfolio Item">
-                            <div class="overlay-thumb">
-                                <a href="javascript:void(0)" class="like-product">
-                                    <i class="ion-ios-heart-outline"></i>
-                                    <span class="like-product">Liked</span>
-                                    <span class="output">256</span>
-                                </a>
-                                <div class="details">
-                                    <span class="title">STYLE FASHION</span>
-                                    <span class="info">NEW BAG & STYLE FASHION</span>
-                                </div>
-                                <span class="btnBefore"></span>
-                                <span class="btnAfter"></span>
-                                <a class="main-portfolio-link" href="single-project.html"></a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <div class="load-more">
@@ -292,7 +172,8 @@
             </div>
             <div class="col-md-6">
                 <div class="row">
-                    <div class="newsletter-right" style="background: url({{asset('assets')}}/img/newsletter-bg.jpg)">
+                    <div class="newsletter-right"
+                         style="background: url({{asset('assets')}}/img/newsletter-bg.jpg)">
                         <div class="newsletter-right-inner">
                             <form>
                                 <input type="text" name="newsletter" placeholder="ENTER YOUR EMAIL">
