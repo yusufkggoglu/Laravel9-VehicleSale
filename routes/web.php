@@ -11,9 +11,12 @@ Route::get('/home', function () {
 });
 
 //**************************ANA SAYFA ROUTES*******************************
-Route::get('/', function () {
-    return view('home.index');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/car/{id}', [HomeController::class, 'car'])->name('car');
+Route::get('/categorycars/{slug}', [HomeController::class, 'categorycars'])->name('categorycars');
+
+
+
 Route::redirect('/anasayfa', '/')->name('anasayfa');
 Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
 

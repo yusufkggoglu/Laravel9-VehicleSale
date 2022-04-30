@@ -13,4 +13,13 @@ class Category extends Model
     {
         return $this->hasMany(Car::class);
     }
+
+    #One To Many Iverse
+    public function parent(){
+        return $this->belongsTo(Category::class,'parent_id');
+    }
+    #One To Many
+    public function children(){
+        return $this->hasMany(Category::class,'parent_id');
+    }
 }

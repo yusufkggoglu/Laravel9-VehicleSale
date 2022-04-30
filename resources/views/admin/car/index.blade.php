@@ -46,7 +46,7 @@
                                                     <td>
                                                         @if($rs->image)
                                                             <img src="{{Storage::url($rs->image)}}"
-                                                                 style=" height:100px ;width: 150px">
+                                                                 style="border-radius:2px;width:100%;height:100%">
                                                         @endif
                                                     </td>
                                                     <td> <a href="{{route('admin_image_index',['pid'=>$rs->id])}}"
