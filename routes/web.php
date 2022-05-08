@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminPanel\AdminCarController;
+use App\Http\Controllers\AdminPanel\AdminHomeController;
 use App\Http\Controllers\AdminPanel\CategoryController;
 use App\Http\Controllers\AdminPanel\ImageController;
 use App\Http\Controllers\HomeController;
@@ -10,23 +11,27 @@ Route::get('/home', function () {
     return view('welcome');
 });
 
-//**************************ANA SAYFA ROUTES*******************************
+//**************************HOME PAGE ROUTES*******************************
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::redirect('/anasayfa', '/')->name('anasayfa');
 Route::get('/car/{id}', [HomeController::class, 'car'])->name('car');
 Route::get('/categorycars/{slug}', [HomeController::class, 'categorycars'])->name('categorycars');
-
-
-
-Route::redirect('/anasayfa', '/')->name('anasayfa');
+//**************************GENERAL ROUTES*******************************
 Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
+
 
 //**********************ADMİN PANEL ROUTES****************************
 Route::prefix('admin')->name('admin_')->group(function () {
-    Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home')->middleware('auth');
-    //*************************LOGIN ROUTES****************************
-    Route::get('/login', [HomeController::class, 'login'])->name('login');
-    Route::post('/logincheck', [HomeController::class, 'logincheck'])->name('logincheck');
-    Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
+    Route::get('/', [AdminHomeController::class, 'index'])->name('home')->middleware('auth');
+
+    //*************************GENERAL ROUTES****************************
+    Route::get('/login', [AdminHomeController::class, 'login'])->name('login');
+    Route::post('/logincheck', [AdminHomeController::class, 'logincheck'])->name('logincheck');
+    Route::get('/logout', [AdminHomeController::class, 'logout'])->name('logout');
+    Route::get('/setting', [AdminHomeController::class, 'setting'])->name('setting');
+    Route::post('/setting/update', [AdminHomeController::class, 'settingsUpdate'])->name('setting_update');
+
+
     //****************ADMİN CATEGORY ROUTES*****************************
     Route::prefix('category')->name('category_')->controller(CategoryController::class)->group(function () {
         Route::get('/', 'index')->name('home');

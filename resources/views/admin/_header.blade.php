@@ -62,7 +62,7 @@
                             </div>
                         </div>
                         <div class="item-content">
-                            <h6 class="font-weight-normal">Settings</h6>
+                            <h6 class="font-weight-normal" href="/admin/setting">Settings</h6>
                             <p class="font-weight-light small-text mb-0 text-muted">
                                 Private message
                             </p>
@@ -90,7 +90,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                     @auth()
-                        <a href="admin/settings" class="dropdown-item">
+                        <a href="admin/setting" class="dropdown-item">
                             <i class="mdi mdi-settings text-primary"></i>
                             Settings
                         </a>

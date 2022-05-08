@@ -7,12 +7,15 @@
 </div>
 <nav class="menu">
     <div class="menu-list">
+        @php
+            $maincategories = \App\Http\Controllers\HomeController::maincategorylist()
+        @endphp
         <ul>
-            <li class="menu-item-has-children"><a href="#">Home</a>
+            <li class="menu-item-has-children"><a href="#">Car Category</a>
                 <ul class="sub-menu">
-                    <li><a href="index.html">- Default</a></li>
-                    <li><a href="index-architecture.html">- Architecture</a></li>
-                    <li><a href="index-full-slider.html">- Slider Full Width</a></li>
+                    @foreach($maincategories as $rs)
+                        <li><a href="{{route('categorycars',['slug'=>$rs->title])}}">- {{$rs->title}}</a></li>
+                    @endforeach
                 </ul>
             </li>
             <li><a href="about.html">About</a></li>
