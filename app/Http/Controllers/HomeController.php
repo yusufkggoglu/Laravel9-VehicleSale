@@ -2,30 +2,57 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Car;
+use App\Models\Category;
+use App\Models\Settings;
+use Hamcrest\Core\Set;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    //
-    public function index()
+    public static function maincategorylist()
     {
-        return view(view('home.index'));
+        return Category::where('parent_id', '=', 0)->with('children')->get();
     }
 
-    public function test($id, $name)
+    public function index()
     {
-        //verileri dataya yükleyipde ulaşabiliriz.
-        $data['id'] = $id;
-        $data['name'] = $name;
-        return view('home.test', $data);
-        /*
-        echo "ID number : ", $id;
-        echo "<br> Name : ", $name;
-        for($i=1;$i<$id;$i++)
-        {
-            echo "<br> $i - $name";
-        }*/
+        $sliderdata = Car::limit(4)->get();
+        $carlist1 = Car::limit(6)->get();
+        $setting = Settings::first();
+        return view('home.index', [
+            'setting' => $setting,
+            'sliderdata' => $sliderdata,
+            'carlist1' => $carlist1
+        ]);
+    }
+
+    public function car($id)
+    {
+        $data = Car::find($id);
+        $images = DB::table('images')->where('car_id', $id)->get();
+        $carlist2 = Car::limit(6)->get();
+        return view('home.car', [
+            'data' => $data,
+            'images' => $images,
+            'carlist2' => $carlist2
+        ]);
+    }
+
+    public function categorycars($slug)
+    {
+        echo "category";
+        exit();
+        $data = Car::find($id);
+        $images = DB::table('images')->where('car_id', $id)->get();
+        $carlist2 = Car::limit(6)->get();
+        return view('home.car', [
+            'data' => $data,
+            'images' => $images,
+            'carlist2' => $carlist2
+        ]);
     }
 
     public function aboutus()

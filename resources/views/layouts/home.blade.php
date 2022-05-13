@@ -7,6 +7,7 @@
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')">
     <meta name="author" content="Yusuf K.">
+    <link rel="icon" type="image/x-icon" href="@yield('icon')">
     <meta name="msapplication-tap-highlight" content="yes"/>
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0"/>

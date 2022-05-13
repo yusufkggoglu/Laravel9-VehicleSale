@@ -90,7 +90,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                     @auth()
-                        <a href="admin/setting" class="dropdown-item">
+                        <a href="{{route('admin_setting')}}" class="dropdown-item">
                             <i class="mdi mdi-settings text-primary"></i>
                             Settings
                         </a>
