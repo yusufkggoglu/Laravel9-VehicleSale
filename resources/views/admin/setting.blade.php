@@ -221,7 +221,7 @@
                                                         <h4 class="card-title">Contact Page</h4>
                                                         <div class="form-group">
                                                             <label for="exampleTextarea1">References</label>
-                                                            <textarea name="contactt"
+                                                            <textarea name="contact"
                                                                       class="form-control" id="contactt"
                                                                       rows="4">{{$data->contact}}
                                                             </textarea>

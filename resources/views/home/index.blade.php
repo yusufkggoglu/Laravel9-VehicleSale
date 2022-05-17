@@ -1,10 +1,10 @@
 @extends('layouts.home')
 
-@section('title', 'Laravel Vehicle Car')
-@section('description')
-    Türkiyenin en güvenilir ve en çok ürün bulunduran araç sitesi...
-@endsection
-@section('keywords','Araç,Araba,Satılık,Satılık Araba,Sedan,Hatchback')
+@section('title', $setting->title)
+@section('description',$setting->description)
+@section('keywords',$setting->keywords)
+@section('icon',Storage::url($setting->icon))
+
 
 @section('content')
     <!-- slider -->
@@ -127,33 +127,33 @@
             </div>
             <div class="js-masonry">
                 <div class="row" id="work-grid">
-                    <!-- Begin of Thumbs Portfolio -->
-                    @foreach($carlist1 as $rs)
-                        <div class="col-md-4 col-sm-4 col-xs-12 mix web">
+                <!-- Begin of Thumbs Portfolio -->
+                @foreach($carlist1 as $rs)
+                    <div class="col-md-4 col-sm-4 col-xs-12 mix web">
 
-                            <div class="img home-portfolio-image">
-                                <img src="{{Storage::url($rs->image)}}" style="width:370px;height:300px "
-                                     alt="Portfolio Item">
-                                <div class="overlay-thumb">
-                                    <a href="javascript:void(0)" class="like-product">
-                                        <i class="ion-ios-heart-outline"></i>
-                                        <span class="like-product">Liked</span>
-                                        <span class="output">60</span>
-                                    </a>
-                                    <div class="details">
-                                        <span class="title">{{$rs->title}}</span>
-                                        <span class="info">{{$rs->price}}₺</span>
-                                    </div>
-                                    <span class="btnBefore"></span>
-                                    <span class="btnAfter"></span>
-                                    <a class="main-portfolio-link" href="{{route('car',['id'=>$rs->id])}}"></a>
+                        <div class="img home-portfolio-image">
+                            <img src="{{Storage::url($rs->image)}}" style="width:370px;height:300px "
+                                 alt="Portfolio Item">
+                            <div class="overlay-thumb">
+                                <a href="javascript:void(0)" class="like-product">
+                                    <i class="ion-ios-heart-outline"></i>
+                                    <span class="like-product">Liked</span>
+                                    <span class="output">60</span>
+                                </a>
+                                <div class="details">
+                                    <span class="title">{{$rs->title}}</span>
+                                    <span class="info">{{$rs->price}}₺</span>
                                 </div>
+                                <span class="btnBefore"></span>
+                                <span class="btnAfter"></span>
+                                <a class="main-portfolio-link" href="{{route('car',['id'=>$rs->id])}}"></a>
                             </div>
-
                         </div>
-                    @endforeach
-                </div>
+
+                    </div>
+                @endforeach
             </div>
+        </div>
             <div class="load-more">
                 <a href="javascript:void(0)" id="load-more"><i class="icon-refresh"></i></a>
             </div>

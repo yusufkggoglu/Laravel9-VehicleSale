@@ -19,15 +19,43 @@ class HomeController extends Controller
 
     public function index()
     {
+        $page='home';
         $sliderdata = Car::limit(4)->get();
         $carlist1 = Car::limit(6)->get();
         $setting = Settings::first();
         return view('home.index', [
+            'page' => $page,
             'setting' => $setting,
             'sliderdata' => $sliderdata,
             'carlist1' => $carlist1
         ]);
     }
+
+    public function about()
+    {
+        $setting = Settings::first();
+        return view('home.about', [
+            'setting' => $setting,
+        ]);
+    }
+
+    public function references()
+    {
+        $setting = Settings::first();
+        return view('home.references', [
+            'setting' => $setting,
+        ]);
+    }
+
+    public function contact()
+    {
+        $setting = Settings::first();
+        return view('home.contact', [
+            'setting' => $setting,
+        ]);
+    }
+
+
 
     public function car($id)
     {
@@ -41,23 +69,14 @@ class HomeController extends Controller
         ]);
     }
 
-    public function categorycars($slug)
+    public function categorycars($id)
     {
-        echo "category";
-        exit();
-        $data = Car::find($id);
-        $images = DB::table('images')->where('car_id', $id)->get();
-        $carlist2 = Car::limit(6)->get();
-        return view('home.car', [
-            'data' => $data,
-            'images' => $images,
-            'carlist2' => $carlist2
+        $category = Category::find($id);
+        $cars = DB::table('cars')->where('category_id', $id)->get();
+        return view('home.categorycars', [
+            'category' => $category,
+            'cars' => $cars,
         ]);
-    }
-
-    public function aboutus()
-    {
-        return view('home.about');
     }
 
     public function login()

@@ -15,9 +15,12 @@ Route::get('/home', function () {
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::redirect('/anasayfa', '/')->name('anasayfa');
 Route::get('/car/{id}', [HomeController::class, 'car'])->name('car');
-Route::get('/categorycars/{slug}', [HomeController::class, 'categorycars'])->name('categorycars');
+Route::get('/categorycars/{id}/{slug}', [HomeController::class, 'categorycars'])->name('categorycars');
 //**************************GENERAL ROUTES*******************************
-Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/references', [HomeController::class, 'references'])->name('references');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+
 
 
 //**********************ADMİN PANEL ROUTES****************************
