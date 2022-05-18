@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminPanel\AdminCarController;
 use App\Http\Controllers\AdminPanel\AdminHomeController;
 use App\Http\Controllers\AdminPanel\CategoryController;
 use App\Http\Controllers\AdminPanel\ImageController;
+use App\Http\Controllers\AdminPanel\MessageController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,7 @@ Route::get('/categorycars/{id}/{slug}', [HomeController::class, 'categorycars'])
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/references', [HomeController::class, 'references'])->name('references');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-
+Route::post('/storemessage', [HomeController::class, 'storemessage'])->name('storemessage');
 
 
 //**********************ADMİN PANEL ROUTES****************************
@@ -61,6 +62,17 @@ Route::prefix('admin')->name('admin_')->group(function () {
         Route::get('/{pid}', 'index')->name('index');
         Route::post('/store/{pid}', 'store')->name('store');
         Route::get('/delete/{pid}/{id}', 'destroy')->name('delete');
+    });
+
+    //****************ADMİN MESSAGE ROUTES*****************************
+    Route::prefix('message')->name('message_')->controller(MessageController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/store/', 'store')->name('store');
+        Route::get('/delete/{id}', 'destroy')->name('delete');
+        Route::post('/update/{id}', 'update')->name('update');
+        Route::get('/show/{id}', 'show')->name('show');
+
+
     });
 });
 

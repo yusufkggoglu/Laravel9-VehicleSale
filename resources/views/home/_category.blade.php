@@ -12,29 +12,17 @@
         @endphp
         <ul>
             <li class="menu-item-has-children"><a href="#">Car Category</a>
-                <ul class="sub-menu">
+                <ul class="sub-menu ">
                     @foreach($maincategories as $rs)
-                        <li><a href="{{route('categorycars',['slug'=>$rs->title])}}">- {{$rs->title}}</a></li>
+                        <li>
+                            <a href="{{route('categorycars',['id'=>$rs->id ,'slug'=>$rs->title])}}">- {{$rs->title}}</a>
+                        </li>
                     @endforeach
                 </ul>
             </li>
-            <li><a href="about.html">About</a></li>
-            <li class="menu-item-has-children"><a href="#">Portfolio</a>
-                <ul class="sub-menu">
-                    <li><a href="portfolio-2column.html">-Portfolio 2 Column</a></li>
-                    <li><a href="portfolio-3column.html">-Portfolio 3 Column</a></li>
-                    <li><a href="portfolio-masonry.html">-Portfolio Masonry</a></li>
-                    <li><a href="portfolio-dribbble.html">-Portfolio Dribbble</a></li>
-                </ul>
-            </li>
-            <li class="menu-item-has-children"><a href="#">Blog</a>
-                <ul class="sub-menu">
-                    <li><a href="blog.html">Blog Default</a></li>
-                    <li><a href="blog-timeline.html">Blog Timeline</a></li>
-                    <li><a href="single-blog.html">Blog Single</a></li>
-                </ul>
-            </li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="{{route('about')}}">About</a></li>
+            <li><a href="{{route('contact')}}">Contact</a></li>
+            <li><a href="{{route('references')}}">References</a></li>
         </ul>
     </div>
 </nav>

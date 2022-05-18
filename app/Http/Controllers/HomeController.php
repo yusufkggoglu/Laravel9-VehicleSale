@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use App\Models\Category;
+use App\Models\Message;
 use App\Models\Settings;
 use Hamcrest\Core\Set;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $page='home';
+        $page = 'home';
         $sliderdata = Car::limit(4)->get();
         $carlist1 = Car::limit(6)->get();
         $setting = Settings::first();
@@ -55,6 +56,22 @@ class HomeController extends Controller
         ]);
     }
 
+    public function storemessage(Request $request)
+    {
+        //dd($request);
+        $data = new Message();
+        $data->name = $request->input('name');
+        $data->lastname = $request->input('lastname');
+        $data->email = $request->input('email');
+        $data->phone = $request->input('phone');
+        $data->subject = $request->input('subject');
+        $data->message = $request->input('message');
+        $data->ip = $request->ip();
+        $data->save();
+
+        return redirect()->route('contact')->with('info','Your Message has been sent , Thank You.');
+
+    }
 
 
     public function car($id)

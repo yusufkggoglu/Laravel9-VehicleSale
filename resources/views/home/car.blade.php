@@ -1,10 +1,6 @@
 @extends('layouts.home')
 
 @section('title',$data->title)
-@section('description')
-    Türkiyenin en güvenilir ve en çok ürün bulunduran araç sitesi...
-@endsection
-@section('keywords','Araç,Araba,Satılık,Satılık Araba,Sedan,Hatchback')
 
 @section('content')
 
@@ -118,6 +114,10 @@
             <div class="row" id="work-grid">
                 <!-- Begin of Thumbs Portfolio -->
                 @foreach($carlist2 as $rs)
+                    @if($rs->id==$data->id)
+
+
+                    @endif
                     <div class="col-md-4 col-sm-4 col-xs-12 mix web">
                         <div class="img home-portfolio-image">
                             <img src="{{Storage::url($rs->image)}}" style="width:370px;height:300px "

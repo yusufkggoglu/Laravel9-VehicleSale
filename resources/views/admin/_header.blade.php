@@ -29,9 +29,9 @@
         <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item dropdown me-1">
                 <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center"
-                   id="messageDropdown" href="admin/messages">
+                   id="messageDropdown" href="{{route('admin_message_index')}}">
                     <i class="mdi mdi-message-text mx-0"></i>
-                   <!-- bildirim = <span class="count"></span> -->
+                    <span class="count"></span>
                 </a>
             </li>
             <li class="nav-item dropdown me-4">

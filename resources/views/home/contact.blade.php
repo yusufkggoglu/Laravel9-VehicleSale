@@ -35,20 +35,20 @@
     <div class="container margin-top">
         <div class="contact-wrapper">
             <div class="row">
+                @include('home.messages')
                 {!! $setting->contact !!}
-                <form method="GET">
+                <form action="{{route('storemessage')}}" method="post">
+                    @csrf
                     <div class="contact-form">
-
                         <div class="col-md-4">
-                            <input type="text" placeholder="FIRST NAME *">
-                            <input type="text" placeholder="LAST NAME *">
-                            <input type="text" placeholder="TELEPHONE *">
-
-                            <input type="text" placeholder="E-MAIL *">
-                            <input type="text" placeholder="SUBJECT">
+                            <input type="text" name="name" placeholder="FIRST NAME *">
+                            <input type="text" name="lastname" placeholder="LAST NAME *">
+                            <input type="text" name="phone" placeholder="TELEPHONE *">
+                            <input type="text" name="email" placeholder="E-MAIL *">
+                            <input type="text" name="subject" placeholder="SUBJECT">
                         </div>
                         <div class="col-md-5">
-                            <textarea placeholder="MESSAGE"></textarea>
+                            <textarea name="message" placeholder="MESSAGE"></textarea>
                             <input type="submit" value="SEND">
                         </div>
                     </div>
