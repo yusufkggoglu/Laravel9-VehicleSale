@@ -13,6 +13,9 @@
         </center>
     </div>
     <div class="container">
+        <center>
+            <h1>References</h1>
+        </center>
         {!! $setting->references !!}
     </div>
 @endsection

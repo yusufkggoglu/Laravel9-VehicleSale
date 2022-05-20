@@ -13,6 +13,8 @@
         </center>
     </div>
     <div class="container">
+        <h1>About Us</h1>
+        <hr style="width: 1200px">
         {!! $setting->aboutus !!}
     </div>
 @endsection

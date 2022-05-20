@@ -55,9 +55,7 @@
                         <td>
                             <form action="{{route('admin_message_update', ['id'=>$data->id])}} " method="post">
                                 @csrf
-                                <textarea class="textarea" cols="100" id="note" name="note">
-                                {{$data->note}}
-                            </textarea>
+                                <textarea class="textarea" cols="100" id="note" name="note">{{$data->note}}</textarea>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Update Data</button>
                                 </div>

@@ -5,7 +5,6 @@
 @section('keywords',$setting->keywords)
 @section('icon',Storage::url($setting->icon))
 
-
 @section('content')
     <div class="container" style="">
         <center>

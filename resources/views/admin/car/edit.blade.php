@@ -102,9 +102,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Detail</label>
-                                    <textarea class="textarea" id="detail" name="detail">
-                                        {{$data->detail}}
-                                    </textarea>
+                                    <textarea class="textarea" id="detail" name="detail">{{$data->detail}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Image</label>

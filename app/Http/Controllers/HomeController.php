@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use App\Models\Category;
+use App\Models\Faq;
 use App\Models\Message;
 use App\Models\Settings;
 use Hamcrest\Core\Set;
@@ -56,6 +57,18 @@ class HomeController extends Controller
         ]);
     }
 
+    public function faq()
+    {
+        $setting = Settings::first();
+        $datalist = Faq::all();
+
+        return view('home.faq', [
+            'setting' => $setting,
+            'datalist' =>$datalist
+
+        ]);
+    }
+
     public function storemessage(Request $request)
     {
         //dd($request);
@@ -69,7 +82,7 @@ class HomeController extends Controller
         $data->ip = $request->ip();
         $data->save();
 
-        return redirect()->route('contact')->with('info','Your Message has been sent , Thank You.');
+        return redirect()->route('contact')->with('info', 'Your Message has been sent , Thank You.');
 
     }
 
