@@ -1,5 +1,7 @@
 <div class="navigation">
     <span class="pe-7s-close close-menu" id="close-button"></span>
+    <span class="mdi mdi-account" id="user"></span>
+
     <div class="search-wrap js-ui-search">
         <input class="js-ui-text" type="text" placeholder="Search Here...">
         <span class="eks js-ui-close"></span>
@@ -11,6 +13,17 @@
             $maincategories = \App\Http\Controllers\HomeController::maincategorylist()
         @endphp
         <ul>
+            @auth()
+                <li class="menu-item-has-children" href="#"><a href="">{{Auth::user()->name}}</a>
+                    <ul class="sub-menu">
+                        <li><a href="/logoutuser">- Logout</a> </li>
+
+                    </ul>
+                </li>
+            @endauth
+            @guest()
+            <li><a href="/loginuser">Login    </a><a href="/registeruser">Register</a></li>
+            @endguest
             <li class="menu-item-has-children"><a href="#">Car Category</a>
                 <ul class="sub-menu ">
                     @foreach($maincategories as $rs)

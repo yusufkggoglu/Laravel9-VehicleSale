@@ -64,7 +64,7 @@ class HomeController extends Controller
 
         return view('home.faq', [
             'setting' => $setting,
-            'datalist' =>$datalist
+            'datalist' => $datalist
 
         ]);
     }
@@ -109,30 +109,23 @@ class HomeController extends Controller
         ]);
     }
 
-    public function login()
+    public function loginadmincheck(Request $request)
     {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
 
-        return view('admin.login');
-    }
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
 
-    public function logincheck(Request $request)
-    {
-        if ($request->isMethod('post')) {
-            $credentials = $request->only('email', 'password');
-
-            if (Auth::attempt($credentials)) {
-                $request->session()->regenerate();
-
-                return redirect()->intended('admin');
-            }
-            return back()->withErrors([
-                'email' => 'The provided credentials do not  match  our records.',
-            ]);
-
-        } else {
-            return view('admin.login');
+            return redirect()->intended('/admin');
         }
+        return back()->withErrors([
+            'error' => 'The provided credentials do not  match  our records.',
+        ])->onlyInput('email');
     }
+
 
     public function logout(Request $request)
     {
@@ -140,6 +133,24 @@ class HomeController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/admin/login');
+        return redirect('/');
+    }
+
+    public function loginadmin(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('dashboard');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
     }
 }

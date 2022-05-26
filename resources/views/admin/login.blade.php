@@ -30,7 +30,8 @@
                         </div>
                         <h4>Hello! let's get started</h4>
                         <h6 class="font-weight-light">Sign in to continue.</h6>
-                        <form action="{{ route('admin_logincheck') }}" method="post">
+                        @include('home.messages')
+                        <form action="{{ route('loginadmincheck') }}" method="post">
                             @csrf
                             <div class="form-group">
                                 <input id="email" type="email" name="email" class="form-control" placeholder="Username">
