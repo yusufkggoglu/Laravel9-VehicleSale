@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminPanel\AdminCarController;
 use App\Http\Controllers\AdminPanel\AdminHomeController;
+use App\Http\Controllers\AdminPanel\AdminUserController;
 use App\Http\Controllers\AdminPanel\CategoryController;
 use App\Http\Controllers\AdminPanel\FaqController;
 use App\Http\Controllers\AdminPanel\ImageController;
@@ -25,18 +26,21 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/storemessage', [HomeController::class, 'storemessage'])->name('storemessage');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 
+//**********************LOGİN LOGOUT PANEL ROUTES****************************
+
+Route::view('/loginuser', 'home.login');
+Route::view('/registeruser', 'home.register');
+Route::view('/loginadmin', 'admin.login')->name('loginadmin');
+Route::get('/logoutuser', [HomeController::class, 'logout'])->name('logoutuser');
+Route::post('/loginadmincheck', [HomeController:: class, 'loginadmincheck'])->name('loginadmincheck');
 
 //**********************ADMİN PANEL ROUTES****************************
 Route::prefix('admin')->name('admin_')->group(function () {
     Route::get('/', [AdminHomeController::class, 'index'])->name('home')->middleware('auth');
 
     //*************************GENERAL ROUTES****************************
-    Route::get('/login', [AdminHomeController::class, 'login'])->name('login');
-    Route::post('/logincheck', [AdminHomeController::class, 'logincheck'])->name('logincheck');
-    Route::get('/logout', [AdminHomeController::class, 'logout'])->name('logout');
     Route::get('/setting', [AdminHomeController::class, 'setting'])->name('setting');
     Route::post('/setting/update', [AdminHomeController::class, 'settingsUpdate'])->name('setting_update');
-
 
     //****************ADMİN CATEGORY ROUTES*****************************
     Route::prefix('category')->name('category_')->controller(CategoryController::class)->group(function () {
@@ -84,6 +88,17 @@ Route::prefix('admin')->name('admin_')->group(function () {
         Route::post('/update/{id}', 'update')->name('update');
         Route::get('/delete/{id}', 'destroy')->name('delete');
         Route::get('/show/{id}', 'show')->name('show');
+    });
+
+    //****************ADMİN USER ROUTES*****************************
+    Route::prefix('user')->name('user_')->controller(AdminUserController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::get('/show/{id}', 'show')->name('show');
+        Route::post('/update/{id}', 'update')->name('update');
+        Route::get('/delete/{id}', 'destroy')->name('delete');
+        Route::post('/addrole/{id}', 'addrole')->name('addrole');
+        Route::get('/destroyrole/{uid}/{rid}', 'destroyrole')->name('destroyrole');
     });
 });
 

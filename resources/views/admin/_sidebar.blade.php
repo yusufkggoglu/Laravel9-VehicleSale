@@ -21,7 +21,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/users">
+                <a class="nav-link" href="/admin/user">
                     <i style="color:darkblue" class="mdi mdi-account-multiple menu-icon"></i>
                     <span class="menu-title">Users</span>
                 </a>
