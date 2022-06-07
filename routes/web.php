@@ -27,16 +27,15 @@ Route::post('/storemessage', [HomeController::class, 'storemessage'])->name('sto
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 
 //**********************LOGİN LOGOUT PANEL ROUTES****************************
-
-Route::view('/loginuser', 'home.login');
-Route::view('/registeruser', 'home.register');
+Route::view('/loginuser', 'home.login')->name('loginuser');
+Route::view('/registeruser', 'home.register')->name('registeruser');
 Route::view('/loginadmin', 'admin.login')->name('loginadmin');
 Route::get('/logoutuser', [HomeController::class, 'logout'])->name('logoutuser');
 Route::post('/loginadmincheck', [HomeController:: class, 'loginadmincheck'])->name('loginadmincheck');
 
 //**********************ADMİN PANEL ROUTES****************************
-Route::prefix('admin')->name('admin_')->group(function () {
-    Route::get('/', [AdminHomeController::class, 'index'])->name('home')->middleware('auth');
+Route::middleware('admin')->prefix('admin')->name('admin_')->group(function () {
+    Route::get('/', [AdminHomeController::class, 'index'])->name('home');
 
     //*************************GENERAL ROUTES****************************
     Route::get('/setting', [AdminHomeController::class, 'setting'])->name('setting');
