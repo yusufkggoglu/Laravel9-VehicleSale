@@ -14,8 +14,10 @@
         @endphp
         <ul>
             @auth()
-                <li class="menu-item-has-children" href="#"><a href="">{{Auth::user()->name}}</a>
+                <li class="menu-item-has-children" href="#"><a href="">👤 {{Auth::user()->name}}</a>
                     <ul class="sub-menu">
+                        <li><a href="/userpanel">- My Account</a> </li>
+
                         <li><a href="/logoutuser">- Logout</a> </li>
 
                     </ul>
