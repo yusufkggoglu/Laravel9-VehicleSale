@@ -3,11 +3,13 @@
 use App\Http\Controllers\AdminPanel\AdminCarController;
 use App\Http\Controllers\AdminPanel\AdminHomeController;
 use App\Http\Controllers\AdminPanel\AdminUserController;
+use App\Http\Controllers\AdminPanel\BrandController;
 use App\Http\Controllers\AdminPanel\CategoryController;
 use App\Http\Controllers\AdminPanel\FaqController;
 use App\Http\Controllers\AdminPanel\ImageController;
 use App\Http\Controllers\AdminPanel\MessageController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserCarController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,9 +45,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
 
     //**********************USER PANEL ROUTES****************************
+    Route::get('/user/posting', [UserCarController::class, 'index'])->name('user_car_posting');
+    Route::get('/user/car/create', [UserCarController::class, 'create'])->name('user_car_create');
+    Route::post('/user/car/store', [UserCarController::class, 'store'])->name('user_car_store');
+
 
     Route::prefix('userpanel')->name('userpanel_')->controller(UserController::class)->group(function () {
         Route::get('/', 'index')->name('home');
+
 
 
     });
@@ -57,6 +64,16 @@ Route::middleware('auth')->group(function () {
         //*************************GENERAL ROUTES****************************
         Route::get('/setting', [AdminHomeController::class, 'setting'])->name('setting');
         Route::post('/setting/update', [AdminHomeController::class, 'settingsUpdate'])->name('setting_update');
+
+        //****************ADMİN BRAND ROUTES*****************************
+        Route::prefix('brand')->name('brand_')->controller(BrandController::class)->group(function () {
+            Route::get('/', 'index')->name('home');
+            Route::get('/create', 'create')->name('create');
+            Route::post('/store', 'store')->name('store');
+            Route::get('/delete/{id}', 'destroy')->name('delete');
+            Route::get('/show/{id}', 'show')->name('show');
+        });
+
 
         //****************ADMİN CATEGORY ROUTES*****************************
         Route::prefix('category')->name('category_')->controller(CategoryController::class)->group(function () {
