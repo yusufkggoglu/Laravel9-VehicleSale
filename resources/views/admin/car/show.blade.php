@@ -38,7 +38,11 @@
                                     </tr>
                                     <tr>
                                         <th style="width: 30px">Brand</th>
-                                        <td>{{$data->brand}}</td>
+                                        @foreach($brand as $rs)
+                                            @if($data->brand_id==$rs->id)
+                                        <td>{{$rs->title}}</td>
+                                            @endif
+                                        @endforeach
                                     </tr>
                                     <tr>
                                         <th style="width: 30px">Price</th>

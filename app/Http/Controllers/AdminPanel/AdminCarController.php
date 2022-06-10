@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Car;
 use Illuminate\Http\Request;
@@ -19,7 +20,12 @@ class AdminCarController extends Controller
     public function index()
     {
         $data = Car::all();
-        return view('admin.car.index', ['data' => $data]);
+        $brand = Brand::all();
+        return view('admin.car.index', [
+            'data' => $data,
+            'brand' => $brand,
+
+        ]);
     }
 
     /**
@@ -30,7 +36,11 @@ class AdminCarController extends Controller
     public function create()
     {
         $data = Category::all();
-        return view('admin.car.create', ['data' => $data]);
+        $brand = Brand::all();
+        return view('admin.car.create', [
+            'data' => $data,
+            'brand' => $brand,
+        ]);
     }
 
     /**
@@ -43,8 +53,8 @@ class AdminCarController extends Controller
     {
         $data = new Car();
         $data->category_id = $request->category_id;
-        $data->user_id = 0; //$request->category_id;
-        $data->brand_id = 0; //$request->category_id;
+        $data->user_id =$request->user_id;
+        $data->brand_id = $request->brand_id;
         $data->brand = $request->brand;
         $data->model = $request->model;
         $data->seri = $request->seri;
@@ -80,7 +90,11 @@ class AdminCarController extends Controller
     public function show(Car $Car, $id)
     {
         $data = Car::find($id);
-        return view('admin.car.show', ['data' => $data]);
+        $brand = Brand::all();
+        return view('admin.car.show', [
+            'data' => $data,
+            'brand' => $brand,
+        ]);
     }
 
     /**
@@ -93,9 +107,11 @@ class AdminCarController extends Controller
     {
         $data = Car::find($id);
         $datalist = Category::all();
+        $brand = Brand::all();
         return view('admin.car.edit', [
             'data' => $data,
-            'datalist' => $datalist
+            'datalist' => $datalist,
+            'brand' => $brand,
         ]);
     }
 
@@ -110,8 +126,8 @@ class AdminCarController extends Controller
     {
         $data = Car::find($id);
         $data->category_id = $request->category_id;
-        $data->user_id = 0; //$request->category_id;
-        $data->brand_id = 0; //$request->category_id;
+        $data->user_id =$request->user_id;
+        $data->brand_id = $request->brand_id;
         $data->brand = $request->brand;
         $data->model = $request->model;
         $data->seri = $request->seri;

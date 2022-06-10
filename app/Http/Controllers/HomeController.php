@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Car;
 use App\Models\Category;
 use App\Models\Faq;
 use App\Models\Message;
 use App\Models\Settings;
+use App\Models\User;
 use Hamcrest\Core\Set;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -89,13 +91,18 @@ class HomeController extends Controller
 
     public function car($id)
     {
+        $brand = Brand::all();
+        $user = User::all();
         $data = Car::find($id);
         $images = DB::table('images')->where('car_id', $id)->get();
         $carlist2 = Car::limit(6)->get();
         return view('home.car', [
             'data' => $data,
             'images' => $images,
-            'carlist2' => $carlist2
+            'carlist2' => $carlist2,
+            'user' => $user,
+            'brand' => $brand,
+
         ]);
     }
 

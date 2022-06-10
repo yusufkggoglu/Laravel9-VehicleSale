@@ -42,16 +42,23 @@
                                                     <td>{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs->category,$rs->category->title)}}</td>
                                                     <td>{{$rs->title}}</td>
                                                     <td>{{$rs->price}}₺</td>
-                                                    <td>{{$rs->brand}}</td>
+                                                    @foreach($brand as $temp)
+                                                        @if($rs->brand_id==$temp->id)
+                                                            <td>{{$temp->title}}</td>
+                                                        @endif
+                                                    @endforeach
+                                                    @if($rs->brand_id==null)
+                                                        <td></td>@endif
                                                     <td>
                                                         @if($rs->image)
                                                             <img src="{{Storage::url($rs->image)}}"
                                                                  style="border-radius:2px;width:100%;height:100%">
                                                         @endif
                                                     </td>
-                                                    <td> <a href="{{route('admin_image_index',['pid'=>$rs->id])}}"
-                                                        onclick="return !window.open(this.href,'','top=50 left=100 width=1100,height=700')">
-                                                             <img src="{{asset('assets')}}/admin/images/indir.png" style=" border-radius:2px ; height:40px ;width: 50px">
+                                                    <td><a href="{{route('admin_image_index',['pid'=>$rs->id])}}"
+                                                           onclick="return !window.open(this.href,'','top=50 left=100 width=1100,height=700')">
+                                                            <img src="{{asset('assets')}}/admin/images/indir.png"
+                                                                 style=" border-radius:2px ; height:40px ;width: 50px">
                                                         </a>
                                                     </td>
 

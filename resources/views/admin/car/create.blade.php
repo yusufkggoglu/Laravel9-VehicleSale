@@ -42,7 +42,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Brand</label>
-                                    <input type="text" name="brand" class="form-control" placeholder="Brand">
+                                    <select class="form-control select2" name="brand_id">
+                                        @foreach($brand as $rs)
+                                            <option value="{{$rs->id}}">{{$rs->title}} </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Model</label>

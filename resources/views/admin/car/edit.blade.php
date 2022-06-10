@@ -45,7 +45,14 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Brand</label>
-                                    <input type="text" name="brand" class="form-control" value="{{$data->brand}}">
+                                    <select class="form-control select2" name="brand_id">
+                                    @foreach($brand as $rs)
+                                        <option value="{{$rs->id}}"
+                                                @if($rs->id == $data->brand_id) selected="selected" @endif>
+                                            {{$rs->title}}
+                                        </option>
+                                    @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Model</label>
