@@ -106,7 +106,7 @@ class HomeController extends Controller
     public function car($id)
     {
 
-        $comment = Comment::where('car_id',$id)->get();
+        $comment = Comment::where('car_id',$id)->where('status','True')->get();
         $brand = Brand::all();
         $user = User::all();
         $data = Car::find($id);

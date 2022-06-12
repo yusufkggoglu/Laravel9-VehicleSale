@@ -19,4 +19,9 @@ class Car extends Model
     {
         return $this->belongsTo(Brand::class);
     }
+
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminPanel\AdminHomeController;
 use App\Http\Controllers\AdminPanel\AdminUserController;
 use App\Http\Controllers\AdminPanel\BrandController;
 use App\Http\Controllers\AdminPanel\CategoryController;
+use App\Http\Controllers\AdminPanel\CommentController;
 use App\Http\Controllers\AdminPanel\FaqController;
 use App\Http\Controllers\AdminPanel\ImageController;
 use App\Http\Controllers\AdminPanel\MessageController;
@@ -123,6 +124,14 @@ Route::middleware('auth')->group(function () {
             Route::get('/delete/{id}', 'destroy')->name('delete');
             Route::post('/update/{id}', 'update')->name('update');
             Route::get('/show/{id}', 'show')->name('show');
+        });
+
+        //ADMIN COMMENT ROUTES
+        Route::prefix('/comment')->name('comment_')->controller(CommentController::class)->group(function() {
+            Route::get('/', 'index')->name('index');
+            Route::get('/show/{id}','show')->name('show');
+            Route::post('/update/{id}','update')->name('update');
+            Route::get('/destroy/{id}','destroy')->name('destroy');
         });
 
         //****************ADMİN FAQ ROUTES*****************************
