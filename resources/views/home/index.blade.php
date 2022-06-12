@@ -39,27 +39,20 @@
                     <article>
                         <h1>HISTORY OF AGENCY</h1>
                         <hr>
-                        <h4>WHO LOVES OR PURSUES OR DESIRES TO OBTAIN PAIN OF ITSELF, BUT BECAUSE OCCASIONALLY
-                            CIRCUMSTANCES OCCUR AND PAIN CAN PROCURE HIM SOME GREAT PLEASURE</h4>
+                        <h4>Our company has been serving since 2007. We have sold more than 1000 vehicles so far and we continue to sell rapidly.</h4>
                         <p>
-                            <br/>Porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-                            velit,
-                            sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam
-                            quaerat
-                            voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-                            suscipit
-                            laboriosam, nisi ut aliquid ex ea commodi modi tempora incidunt ut labore.</p>
+                            <br/>You can publish your own vehicle on our company's website with information and photos and sell your vehicle quickly with secure payment. We guarantee that you will never have a payment problem by developing a secure payment method, taking into account all complaints until now.</p>
                     </article>
                 </div>
             </div>
             <div class="col-md-5 col-md-offset-1 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
                 <div class="row">
                     <div id="history-images" class="owl-carousel">
-                        <div><img class="img-responsive center-block" src="{{asset('assets')}}/img/about_img.jpg"
+                        <div><img class="img-responsive center-block" src="{{asset('assets')}}/img/şirket.jpg"
                                   alt="About"></div>
-                        <div><img class="img-responsive center-block" src="{{asset('assets')}}/img/about_img2.jpg"
+                        <div><img class="img-responsive center-block" src="{{asset('assets')}}/img/şirket2.jpg"
                                   alt="About"></div>
-                        <div><img class="img-responsive center-block" src="{{asset('assets')}}/img/about_img3.jpg"
+                        <div><img class="img-responsive center-block" src="{{asset('assets')}}/img/şirket4.jpg"
                                   alt="About"></div>
                     </div>
                 </div>
@@ -111,20 +104,6 @@
             <h6>Check out our cars...</h6>
         </div>
         <div class="portfolio-wrapper">
-            <button class="nav">
-                <span class="icon-container">
-                    <span class="line line01"></span>
-                    <span class="line line02"></span>
-                    <span class="line line03"></span>
-                    <span class="line line04"></span>
-                </span>
-            </button>
-            <div class="works-filter">
-                <a href="javascript:void(0)" class="filter active" data-filter="mix">All</a>
-                <a href="javascript:void(0)" class="filter" data-filter="branding">Branding</a>
-                <a href="javascript:void(0)" class="filter" data-filter="web">Web Design</a>
-                <a href="javascript:void(0)" class="filter" data-filter="graphic">Graphic Design</a>
-            </div>
             <div class="js-masonry">
                 <div class="row" id="work-grid">
                 <!-- Begin of Thumbs Portfolio -->
@@ -154,9 +133,7 @@
                 @endforeach
             </div>
         </div>
-            <div class="load-more">
-                <a href="javascript:void(0)" id="load-more"><i class="icon-refresh"></i></a>
-            </div>
+
         </div>
     </div>
     <div class="container margin-top">

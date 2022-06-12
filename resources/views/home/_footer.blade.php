@@ -4,8 +4,8 @@
             <div class="col-md-2 col-sm-4 col-xs-12">
                 <div class="footer-inner">
                     <div class="footer-content">
-                        <h4>O.A.K THEME</h4>
-                        <address>City 35 AM <br>Street 1395 p.n <br>your Country</address>
+                        <h4>O.A.K CAR</h4>
+                        <address>Karabük<br>100. yıl mah.<br>Turkey</address>
                     </div>
                 </div>
             </div>
@@ -15,9 +15,9 @@
                     <div class="footer-content">
                         <h4>CONTACT INFO</h4>
                         <p>
-                            T:003 124 115 <br>
-                            E:info@mail.com <br>
-                            W:www.website.com
+                            T:05780078078<br>
+                            E:oakcar@gmail.com<br>
+                            W:www.oakcar.com
                         </p>
                     </div>
                 </div>
@@ -27,14 +27,12 @@
                 <div class="footer-inner">
                     <div class="footer-content">
                         <ul class="social-media">
-                            <li><a href="#"><i class="iconmoon-facebook"></i></a></li>
-                            <li><a href="#"><i class="iconmoon-twitter"></i></a></li>
-                            <li><a href="#"><i class="iconmoon-flickr2"></i></a></li>
-                            <li><a href="#"><i class="iconmoon-dribbble3"></i></a></li>
-                            <li><a href="#"><i class="iconmoon-pinterest"></i></a></li>
-                            <li><a href="#"><i class="iconmoon-linkedin2"></i></a></li>
+                            <li><a href="www.facebook.com"><i class="iconmoon-facebook"></i></a></li>
+                            <li><a href="www.twitter.com"><i class="iconmoon-twitter"></i></a></li>
+                            <li><a href="www.pinterest.com"><i class="iconmoon-pinterest"></i></a></li>
+                            <li><a href="www.linkedin.com"><i class="iconmoon-linkedin2"></i></a></li>
                         </ul>
-                        <span class="copyright-mark">&copy; 2015 OAK, ALL RIGHTS RESERVED</span>
+                        <span class="copyright-mark">&copy; 2007 OAK car, ALL RIGHTS RESERVED</span>
                     </div>
                 </div>
             </div>
