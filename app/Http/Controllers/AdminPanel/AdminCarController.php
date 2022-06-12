@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Car;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -21,9 +22,11 @@ class AdminCarController extends Controller
     {
         $data = Car::all();
         $brand = Brand::all();
+        $user = User::all();
         return view('admin.car.index', [
             'data' => $data,
             'brand' => $brand,
+            'user' => $user,
 
         ]);
     }
@@ -150,6 +153,14 @@ class AdminCarController extends Controller
         if ($request->file('image')) {
             $data->image = $request->file('image')->store('images');
         }
+        $data->save();
+        return redirect('admin/car');
+    }
+
+    public function updatestatus(Request $request, Car $Car, $id)
+    {
+        $data = Car::find($id);
+        $data->status = $request->status;
         $data->save();
         return redirect('admin/car');
     }

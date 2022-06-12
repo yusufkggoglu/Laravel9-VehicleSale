@@ -59,17 +59,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 grid-margin astretch-faqd">
-                    <div class="faqd">
-                        <div class="faqd-body">
-                            <h4 class="faqd-title">Footer</h4>
-
-                            <div class="template-demo">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 @endsection

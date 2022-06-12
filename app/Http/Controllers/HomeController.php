@@ -26,7 +26,7 @@ class HomeController extends Controller
     {
         $page = 'home';
         $sliderdata = Car::limit(4)->get();
-        $carlist1 = Car::limit(6)->get();
+        $carlist1 = Car::where('status','True')->get();
         $setting = Settings::first();
         return view('home.index', [
             'page' => $page,
@@ -105,7 +105,7 @@ class HomeController extends Controller
 
     public function car($id)
     {
-
+        $setting = Settings::first();
         $comment = Comment::where('car_id',$id)->where('status','True')->get();
         $brand = Brand::all();
         $user = User::all();
@@ -119,18 +119,20 @@ class HomeController extends Controller
             'user' => $user,
             'brand' => $brand,
             'comment' => $comment,
-
-
+            'setting' => $setting,
         ]);
     }
 
     public function categorycars($id)
     {
+        $setting = Settings::first();
         $category = Category::find($id);
         $cars = DB::table('cars')->where('category_id', $id)->get();
         return view('home.categorycars', [
             'category' => $category,
             'cars' => $cars,
+            'setting' => $setting,
+
         ]);
     }
 

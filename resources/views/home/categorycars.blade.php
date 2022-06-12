@@ -1,6 +1,7 @@
 @extends('layouts.home')
 
 @section('title',$category->title ,  ' Cars')
+@section('icon',Storage::url($setting->icon))
 
 @section('content')
     <div class="container">
@@ -9,50 +10,8 @@
                     href="/categorycars/{{$category->id}}/{{$category->title}}">{{$category->title}}</a></h4>
         </center>
     </div>
-    <div class="container margin-top">
-        <div class="main-title">
-            <h1>FILTER</h1>
-            <div class="container-fluid">
-
-                <div>
-                    <label for="cars">Brand:</label>
-                    <select name="cars" id="cars">
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="cars">Color:</label>
-                    <select name="color" id="color">
-                        <option value="volvo">Siyah</option>
-                        <option value="saab">Beyaz</option>
-                        <option value="mercedes">Mavi</option>
-                        <option value="audi">Kırmızı</option>
-                    </select>
-                </div>
-
-            </div>
-        </div>
-        <h1>SORT BY</h1>
-
-        <div class="portfolio-wrapper">
-            <button class="nav">
-                <span class="icon-container">
-                    <span class="line line01"></span>
-                    <span class="line line02"></span>
-                    <span class="line line03"></span>
-                    <span class="line line04"></span>
-                </span>
-            </button>
-            <div class="works-filter">
-                <a href="javascript:void(0)" class="filter active" data-filter="mix">All</a>
-                <a href="javascript:void(0)" class="filter" data-filter="branding">Branding</a>
-                <a href="javascript:void(0)" class="filter" data-filter="web">Web Design</a>
-                <a href="javascript:void(0)" class="filter" data-filter="graphic">Graphic Design</a>
-            </div>
-
+    <div class="container">
+        <div class="row">
             <div class="js-masonry">
                 <div class="row" id="work-grid">
                     <!-- Begin of Thumbs Portfolio -->
@@ -82,9 +41,5 @@
                     @endforeach
                 </div>
             </div>
-            <div class="load-more">
-                <a href="javascript:void(0)" id="load-more"><i class="icon-refresh"></i></a>
-            </div>
         </div>
-    </div>
 @endsection

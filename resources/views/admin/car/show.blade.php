@@ -16,6 +16,21 @@
                                 <td><a href="/admin/car/delete/{{$data->id}}"
                                        class="btn btn-danger btn-rounded btn-fw">Delete</a></td>
                             </div>
+                            <form class="form" action="/admin/car/updatestatus/{{$data->id}}" method="post"
+                                  enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <select class="form-control" name="status">
+                                        <option selected>{{$data->status}}</option>
+                                        <option>True</option>
+                                        <option>False</option>
+                                    </select>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Update Data</button>
+                                </div>
+                            </form>
                             <div class="table-responsive pt-3">
                                 <table class="table table-bordered">
                                     <tr>

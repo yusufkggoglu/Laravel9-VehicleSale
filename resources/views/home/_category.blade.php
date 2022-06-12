@@ -16,15 +16,16 @@
             @auth()
                 <li class="menu-item-has-children" href="#"><a href="">👤 {{Auth::user()->name}}</a>
                     <ul class="sub-menu">
-                        <li><a href="/userpanel">- My Account</a> </li>
-
-                        <li><a href="/logoutuser">- Logout</a> </li>
+                        <li><a href="/userpanel">- My Account</a></li>
+                        <li><a href="/user/posting">- My Posting</a></li>
+                        <li><a href="{{route('userpanel_reviews')}}">- My Reviews</a></li>
+                        <li><a href="/logoutuser">- Logout</a></li>
 
                     </ul>
                 </li>
             @endauth
             @guest()
-            <li><a href="/loginuser">Login    </a><a href="/registeruser">Register</a></li>
+                <li><a href="/loginuser">Login </a><a href="/registeruser">Register</a></li>
             @endguest
             <li class="menu-item-has-children"><a href="#">Car Category</a>
                 <ul class="sub-menu ">
@@ -56,8 +57,8 @@
 
     <div class="menu-information">
         <ul>
-            <li><span>T:</span> 003 124 115</li>
-            <li><span>E:</span> info@mail.com</li>
+            <li><span>T:</span> 05784578078</li>
+            <li><span>E:</span> oakcar@mail.com</li>
         </ul>
     </div>
 </div>

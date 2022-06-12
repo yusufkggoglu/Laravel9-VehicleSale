@@ -53,10 +53,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/posting', [UserCarController::class, 'index'])->name('user_car_posting');
     Route::get('/user/car/create', [UserCarController::class, 'create'])->name('user_car_create');
     Route::post('/user/car/store', [UserCarController::class, 'store'])->name('user_car_store');
+
+    Route::get('/user/car/edit/{id}', [UserCarController::class,'edit'])->name('user_car_edit');
+    Route::post('/user/car/update/{id}',[UserCarController::class, 'update'])->name('user_car_update');
+    Route::get('/user/car/delete/{id}',[UserCarController::class, 'destroy'])->name('user_car_delete');
+    Route::get('/user/car/show/{id}',[UserCarController::class, 'show'])->name('user_car_show');
     //****************USER CAR IMAGE GALLERY ROUTES*****************************
     Route::prefix('userpanel')->name('userpanel_')->group(function () {
-        //**********************USER PANEL IMAGE GALLERY ROUTES****************************
 
+        //**********************USER PANEL IMAGE GALLERY ROUTES****************************
         Route::prefix('image')->name('image_')->controller(UserImageController::class)->group(function () {
             Route::get('/{pid}', 'index')->name('index');
             Route::post('/store/{pid}', 'store')->name('store');
@@ -67,6 +72,8 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('userpanel')->name('userpanel_')->controller(UserController::class)->group(function () {
         Route::get('/', 'index')->name('home');
+        Route::get('/reviews', 'reviews')->name('reviews');
+        Route::get('/reviewdestroy/{id}', 'reviewdestroy')->name('review_destroy');
 
 
     });
@@ -109,6 +116,8 @@ Route::middleware('auth')->group(function () {
             Route::post('/update/{id}', 'update')->name('update');
             Route::get('/delete/{id}', 'destroy')->name('delete');
             Route::get('/show/{id}', 'show')->name('show');
+            Route::post('/updatestatus/{id}', 'updatestatus')->name('updatestatus');
+
         });
         //****************ADMİN CAR IMAGE GALLERY ROUTES*****************************
         Route::prefix('image')->name('image_')->controller(ImageController::class)->group(function () {
@@ -127,11 +136,11 @@ Route::middleware('auth')->group(function () {
         });
 
         //ADMIN COMMENT ROUTES
-        Route::prefix('/comment')->name('comment_')->controller(CommentController::class)->group(function() {
+        Route::prefix('/comment')->name('comment_')->controller(CommentController::class)->group(function () {
             Route::get('/', 'index')->name('index');
-            Route::get('/show/{id}','show')->name('show');
-            Route::post('/update/{id}','update')->name('update');
-            Route::get('/destroy/{id}','destroy')->name('destroy');
+            Route::get('/show/{id}', 'show')->name('show');
+            Route::post('/update/{id}', 'update')->name('update');
+            Route::get('/destroy/{id}', 'destroy')->name('destroy');
         });
 
         //****************ADMİN FAQ ROUTES*****************************

@@ -22,6 +22,7 @@
                                             <thead>
                                             <tr>
                                                 <th>ID</th>
+                                                <th>Name</th>
                                                 <th>Category</th>
                                                 <th>Title</th>
                                                 <th>Price</th>
@@ -39,6 +40,11 @@
 
                                                 <tr>
                                                     <td>{{$rs->id}}</td>
+                                                    @foreach($user as $temp)
+                                                        @if($rs->user_id==$temp->id)
+                                                            <td>{{$temp->name}}</td>
+                                                        @endif
+                                                    @endforeach
                                                     <td>{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs->category,$rs->category->title)}}</td>
                                                     <td>{{$rs->title}}</td>
                                                     <td>{{$rs->price}}₺</td>
@@ -80,17 +86,6 @@
                                         </table>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 grid-margin astretch-card">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Footer</h4>
-
-                            <div class="template-demo">
-
                             </div>
                         </div>
                     </div>

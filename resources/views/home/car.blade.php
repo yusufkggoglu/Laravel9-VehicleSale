@@ -1,6 +1,7 @@
 @extends('layouts.home')
 
 @section('title',$data->title)
+@section('icon',Storage::url($setting->icon))
 
 @section('headerjs')
 
@@ -63,6 +64,10 @@
                                 @if($data->user_id==null)
                                     <td></td>@endif
                                 <td>
+                            </tr>
+                            <tr>
+                                <td>TEL NUMBER:</td>
+                                <td>{{$data->telno}}</td>
                             </tr>
                             <tr>
                                 <td>BRAND:</td>
@@ -165,7 +170,16 @@
                         @endauth
                     </form>
                     <div class="main-title">
-                        <h1>COMMENTS</h1>
+                        @php
+                            $average=$data->comment->average('rate')
+                        @endphp
+                        <h1>COMMENTS ({{$data->comment->count('id')}})
+                            @if ($average==1)⭐ @endif
+                            @if ($average==2)⭐⭐ @endif
+                            @if ($average==3)⭐⭐⭐@endif
+                            @if ($average==4)⭐⭐⭐⭐@endif
+                            @if ($average==5)⭐⭐⭐⭐⭐@endif
+                        </h1>
                         <hr>
                     </div>
                     <!-- COMMENT -->
@@ -188,7 +202,7 @@
 
                             </div>
                         </div>
-                    @endforeach
+                @endforeach
                 <!-- COMMENT -->
                 </div>
             </div>
@@ -232,9 +246,7 @@
                 @endforeach
             </div>
         </div>
-        <div class="load-more">
-            <a href="javascript:void(0)" id="load-more"><i class="icon-refresh"></i></a>
-        </div>
+
     </div>
     </div>
 @endsection

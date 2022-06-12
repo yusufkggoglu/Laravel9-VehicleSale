@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Car;
+use App\Models\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -19,12 +20,13 @@ class UserCarController extends Controller
      */
     public function index()
     {
-        $data = Car::where('user_id','=',Auth::id())->get();
+        $setting = Settings::first();
+        $data = Car::where('user_id', '=', Auth::id())->get();
         $brand = Brand::all();
         return view('home.user.car.index', [
             'data' => $data,
             'brand' => $brand,
-
+            'setting' => $setting,
         ]);
     }
 
@@ -35,11 +37,13 @@ class UserCarController extends Controller
      */
     public function create()
     {
+        $setting = Settings::first();
         $data = Category::all();
         $brand = Brand::all();
         return view('home.user.car.create', [
             'data' => $data,
             'brand' => $brand,
+            'setting' => $setting,
         ]);
     }
 
@@ -67,6 +71,7 @@ class UserCarController extends Controller
         $data->yil = $request->yil;
         $data->detail = $request->detail;
         $data->durum = $request->durum;
+        $data->telno = $request->telno;
 
 
         $data->title = $request->title;
@@ -89,11 +94,13 @@ class UserCarController extends Controller
      */
     public function show(Car $Car, $id)
     {
+        $setting = Settings::first();
         $data = Car::find($id);
         $brand = Brand::all();
-        return view('admin.car.show', [
+        return view('home.user.car.show', [
             'data' => $data,
             'brand' => $brand,
+            'setting' => $setting,
         ]);
     }
 
@@ -105,13 +112,15 @@ class UserCarController extends Controller
      */
     public function edit(Car $Car, $id)
     {
+        $setting = Settings::first();
         $data = Car::find($id);
         $datalist = Category::all();
         $brand = Brand::all();
-        return view('admin.car.edit', [
+        return view('home.user.car.edit', [
             'data' => $data,
             'datalist' => $datalist,
             'brand' => $brand,
+            'setting' => $setting,
         ]);
     }
 
@@ -126,7 +135,7 @@ class UserCarController extends Controller
     {
         $data = Car::find($id);
         $data->category_id = $request->category_id;
-        $data->user_id = 0; //$request->category_id;
+        $data->user_id = $request->user_id;
         $data->brand_id = $request->brand_id;
         $data->brand = $request->brand;
         $data->model = $request->model;

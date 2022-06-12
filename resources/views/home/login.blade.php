@@ -1,7 +1,6 @@
 @extends('layouts.home')
 
 @section('title','User Login')
-
 @section('content')
     <div class="container" style="">
         <center>

@@ -68,17 +68,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 grid-margin astretch-card">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Footer</h4>
-
-                            <div class="template-demo">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 @endsection

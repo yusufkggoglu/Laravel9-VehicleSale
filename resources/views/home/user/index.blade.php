@@ -1,6 +1,7 @@
 @extends('layouts.home')
 
 @section('title','User Panel')
+@section('icon',Storage::url($setting->icon))
 
 
 @section('content')

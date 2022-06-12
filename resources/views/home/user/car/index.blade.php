@@ -1,6 +1,7 @@
 @extends('layouts.home')
 
 @section('title','User Posting')
+@section('icon',Storage::url($setting->icon))
 
 @section('content')
     <div class="container" style="">
@@ -58,16 +59,16 @@
                         </td>
 
                         <td>{{$rs->status}}</td>
-                        <td><a href="/admin/car/edit/{{$rs->id}}"
+                        <td><a href="{{route('user_car_edit',['id'=>$rs->id])}}"
                                class="btn btn-primary btn-rounded btn-fw">Edit</a></td>
                         <td style="text-align: center">
                             <a class="btn btn-danger btn-rounded btn-fw"
                                style="color: white;"
-                               href="{{route('admin_car_delete',['id'=>$rs->id])}}"
+                               href="{{route('user_car_delete',['id'=>$rs->id])}}"
                                ,
                                onclick="return confirm('Delete Are You Sure ?')">Delete</a>
                         </td>
-                        <td><a href="/admin/car/show/{{$rs->id}}"
+                        <td><a href="/user/car/show/{{$rs->id}}"
                                class="btn btn-success btn-rounded btn-fw">Show</a></td>
                     </tr>
                 @endforeach
