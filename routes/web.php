@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminPanel\MessageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserCarController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserImageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/home', function () {
@@ -22,12 +23,15 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::redirect('/anasayfa', '/')->name('anasayfa');
 Route::get('/car/{id}', [HomeController::class, 'car'])->name('car');
 Route::get('/categorycars/{id}/{slug}', [HomeController::class, 'categorycars'])->name('categorycars');
+
 //**************************GENERAL ROUTES*******************************
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/references', [HomeController::class, 'references'])->name('references');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/storemessage', [HomeController::class, 'storemessage'])->name('storemessage');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
+Route::post('/storecomment', [HomeController::class, 'storecomment'])->name('storecomment');
+
 
 //**********************LOGİN LOGOUT PANEL ROUTES****************************
 Route::view('/loginuser', 'home.login')->name('loginuser');
@@ -48,11 +52,20 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/posting', [UserCarController::class, 'index'])->name('user_car_posting');
     Route::get('/user/car/create', [UserCarController::class, 'create'])->name('user_car_create');
     Route::post('/user/car/store', [UserCarController::class, 'store'])->name('user_car_store');
+    //****************USER CAR IMAGE GALLERY ROUTES*****************************
+    Route::prefix('userpanel')->name('userpanel_')->group(function () {
+        //**********************USER PANEL IMAGE GALLERY ROUTES****************************
+
+        Route::prefix('image')->name('image_')->controller(UserImageController::class)->group(function () {
+            Route::get('/{pid}', 'index')->name('index');
+            Route::post('/store/{pid}', 'store')->name('store');
+            Route::get('/delete/{pid}/{id}', 'destroy')->name('delete');
+        });
+    });
 
 
     Route::prefix('userpanel')->name('userpanel_')->controller(UserController::class)->group(function () {
         Route::get('/', 'index')->name('home');
-
 
 
     });

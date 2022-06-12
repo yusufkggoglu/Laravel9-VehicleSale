@@ -50,7 +50,7 @@
                                      style="border-radius:2px;width:80%;height:80%">
                             @endif
                         </td>
-                        <td><a href="{{route('admin_image_index',['pid'=>$rs->id])}}"
+                        <td><a href="{{route('userpanel_image_index',['pid'=>$rs->id])}}"
                                onclick="return !window.open(this.href,'','top=50 left=100 width=1100,height=700')">
                                 <img src="{{asset('assets')}}/admin/images/indir.png"
                                      style=" border-radius:2px ; height:40px ;width: 50px">

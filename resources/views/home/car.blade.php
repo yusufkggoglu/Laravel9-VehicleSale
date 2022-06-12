@@ -2,14 +2,19 @@
 
 @section('title',$data->title)
 
-@section('content')
+@section('headerjs')
 
+
+@endsection
+@section('content')
 
     <div class="container">
         <center>
             <h4><a href="#">{{$data->category->title}}</a>/<a href="#">{{$data->title}}</a></h4>
         </center>
     </div>
+    @include('home.messages')
+
     <div class="container">
         <div class="single-project-slider">
             <div class="owl-carousel single-slider">
@@ -45,15 +50,33 @@
                         <table class="table">
                             <tbody>
                             <tr>
-                                <td>CATEGORİ:</td>
+                                <td>CATEGORY:</td>
                                 <td>{{$data->category->title}}</td>
                             </tr>
                             <tr>
-                                <td>MARKA:</td>
-                                <td>{{$data->brand}}</td>
+                                <td>USER:</td>
+                                @foreach($user as $temp)
+                                    @if($data->user_id==$temp->id)
+                                        <td>{{$temp->name}}</td>
+                                    @endif
+                                @endforeach
+                                @if($data->user_id==null)
+                                    <td></td>@endif
+                                <td>
                             </tr>
                             <tr>
-                                <td>SERİ:</td>
+                                <td>BRAND:</td>
+                                @foreach($brand as $temp)
+                                    @if($data->brand_id==$temp->id)
+                                        <td>{{$temp->title}}</td>
+                                    @endif
+                                @endforeach
+                                @if($data->brand_id==null)
+                                    <td></td>@endif
+                                <td>
+                            </tr>
+                            <tr>
+                                <td>SERIES:</td>
                                 <td>{{$data->seri}}</td>
                             </tr>
                             <tr>
@@ -61,7 +84,7 @@
                                 <td>{{$data->model}}</td>
                             </tr>
                             <tr>
-                                <td>YIL:</td>
+                                <td>YEAR:</td>
                                 <td>{{$data->yil}}</td>
                             </tr>
                             <tr>
@@ -69,15 +92,15 @@
                                 <td>{{$data->km}}km</td>
                             </tr>
                             <tr>
-                                <td>YAKIT TÜRÜ:</td>
+                                <td>FUEL TYPE:</td>
                                 <td>{{$data->yakit_turu}}</td>
                             </tr>
                             <tr>
-                                <td>RENK:</td>
+                                <td>COLOR:</td>
                                 <td>{{$data->renk}}</td>
                             </tr>
                             <tr>
-                                <td>VİTES:</td>
+                                <td>GEAR TYPE:</td>
                                 <td>{{$data->vites}}</td>
                             </tr>
                             <tr>
@@ -104,6 +127,74 @@
             </div>
         </div>
     </div>
+    <section id="comments">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9">
+                    <form action="{{route('storecomment')}}" method="post">
+                        @csrf
+                        <input class="input" type="hidden" name="car_id" value="{{$data->id}}">
+                        <h3 class="pull-left"><b>Your Comment</b></h3>
+
+                        <fieldset>
+                            <div class="col-sm-10">
+                                <div class="form-group col-xs-12 col-sm-5 col-lg-10">
+                                <textarea style="width:580px;height: 150px" class="form-control" name="comment"
+                                          placeholder="Your message" required=""></textarea>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="form-group-lg">
+                            <h1>RATING </h1>
+                            <input type="radio" name="rate" value="1">
+                            <label>⭐</label><br>
+                            <input type="radio" name="rate" value="2">
+                            <label>⭐⭐</label><br>
+                            <input type="radio" name="rate" value="3">
+                            <label>⭐⭐⭐</label><br>
+                            <input type="radio" name="rate" value="4">
+                            <label>⭐⭐⭐⭐</label><br>
+                            <input type="radio" name="rate" value="5">
+                            <label>⭐⭐⭐⭐⭐</label><br>
+
+                        </div>
+                        @auth
+                            <button type="submit" class="btn btn-normal pull-right">Submit</button>
+                        @else
+                            <a href="/login" class="btn btn-normal pull-right"> For submit Your Review, Please Login</a>
+                        @endauth
+                    </form>
+                    <div class="main-title">
+                        <h1>COMMENTS</h1>
+                        <hr>
+                    </div>
+                    <!-- COMMENT -->
+                    @foreach($comment as $rs)
+                        <br>
+
+                        <div class="media">
+                            <a class="pull-left" href="#"></a>
+                            <div class="media-body">
+                                <h1 style="color: gray" class="media-heading">{{$rs->user->name}}</h1>
+                                @if ($rs->rate==1)⭐ @endif
+                                @if ($rs->rate==2)⭐⭐ @endif
+                                @if ($rs->rate==3)⭐⭐⭐@endif
+                                @if ($rs->rate==4)⭐⭐⭐⭐@endif
+                                @if ($rs->rate==5)⭐⭐⭐⭐⭐@endif
+                                <p>{{$rs->comment}}</p>
+                                <ul class="list-unstyled list-inline media-detail pull-left">
+                                    <li style="color: #4a4a4b"><i class="fa fa-calendar"></i>{{$rs->created_at}}</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    @endforeach
+                <!-- COMMENT -->
+                </div>
+            </div>
+        </div>
+    </section>
+
     <div class="container margin-top">
         <div class="main-title">
             <h1>SIMILAR CAR</h1>
@@ -150,4 +241,7 @@
 @section('footerjs')
     <a href="javascript:void(0)" class="scroll-top" id="scroll-top"><i
             class="pe-7s-angle-up"></i></a>
+
+
 @endsection
+

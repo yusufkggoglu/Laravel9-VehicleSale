@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Car;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Faq;
 use App\Models\Message;
 use App\Models\Settings;
@@ -70,6 +71,19 @@ class HomeController extends Controller
 
         ]);
     }
+    public function storecomment(Request $request)
+    {
+        $data = new Comment();
+        $data->user_id = Auth::id();
+        $data->car_id = $request->input('car_id');
+        $data->comment = $request->input('comment');
+        $data->rate = $request->input('rate');
+        $data->ip = request()->ip();
+        $data->save();
+
+        return redirect()->route('car',['id' => $request->input('car_id')])->with('success', 'Your Message has been sent , Thank You.');
+
+    }
 
     public function storemessage(Request $request)
     {
@@ -91,6 +105,8 @@ class HomeController extends Controller
 
     public function car($id)
     {
+
+        $comment = Comment::where('car_id',$id)->get();
         $brand = Brand::all();
         $user = User::all();
         $data = Car::find($id);
@@ -102,6 +118,8 @@ class HomeController extends Controller
             'carlist2' => $carlist2,
             'user' => $user,
             'brand' => $brand,
+            'comment' => $comment,
+
 
         ]);
     }
